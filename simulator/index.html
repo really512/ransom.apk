@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>R4NS0M Simulator</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#090909;color:#fff;font-family:Arial,sans-serif;display:grid;place-items:center;min-height:100vh}.box{width:min(720px,92vw);padding:32px;border:2px solid #b40000;background:#120000;text-align:center}.title{font-size:clamp(32px,8vw,72px);font-weight:900;color:#f22}.timer{font-size:48px;font-weight:800;margin:20px 0}.coins{font-size:22px;margin-bottom:24px}button{padding:14px 22px;font-size:18px;font-weight:700;cursor:pointer}small{display:block;margin-top:20px;color:#aaa}
+</style>
+</head>
+<body>
+<main class="box">
+<div class="title">R4NS0M SIMULATOR</div>
+<p>Это безопасная визуальная демонстрация.</p>
+<div class="timer" id="timer">10:00</div>
+<div class="coins">COINS: <span id="coins">0</span></div>
+<button id="add">Получить монеты</button>
+<small>Файлы устройства не читаются, не шифруются и не изменяются.</small>
+</main>
+<script>
+let seconds=600,coins=0;
+const timer=document.getElementById("timer"), coinsEl=document.getElementById("coins");
+function render(){const m=Math.floor(seconds/60),s=seconds%60;timer.textContent=m+":"+String(s).padStart(2,"0");coinsEl.textContent=coins}
+setInterval(()=>{if(seconds>0){seconds--;render()}},1000);
+document.getElementById("add").addEventListener("click",()=>{coins+=100;render()});
+render();
+</script>
+</body>
+</html>
